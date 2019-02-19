@@ -26,6 +26,8 @@ var guessLeft = 0;
 var currentWord = "";
 var letterGuessed = "";
 var words = ["rockies", "skiing", "mountains", "hiking", "biking", "sunny", "west", "microbrewiers", "outdoors"];
+var splitLetters = []
+
 
 // Create variables that hold references to the places in the HTML where we want to display things.
 var directionsText = document.getElementById("directions-text");
@@ -41,6 +43,14 @@ pickCurrentWord = function() {
 
 pickCurrentWord();
 console.log(currentWord);
+
+//get current wrod then split into array 
+splitCurrentWord = function() {
+    splitLetters = currentWord.split("");
+}
+
+splitCurrentWord();
+console.log(splitLetters);
 
 
 
