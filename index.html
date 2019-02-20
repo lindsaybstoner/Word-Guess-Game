@@ -27,7 +27,8 @@ var currentWord = "";
 var letterGuessed = "";
 var words = ["rockies", "skiing", "mountains", "hiking", "biking", "sunny", "west", "microbrewiers", "outdoors"];
 var splitLetters = []
-
+var rightLetters = []
+var wrongLetters = []
 
 // Create variables that hold references to the places in the HTML where we want to display things.
 var directionsText = document.getElementById("directions-text");
@@ -57,27 +58,23 @@ console.log(splitLetters);
 // This function is run whenever the user presses a key.
 document.onkeyup = function(event) {
 
-    
-    console.log(words[0].length)
-
 
   // Determines which key was pressed.
-  var letterGuessed = event.key;
-  var letters = /^[A-Za-z]+$/;
+  letterGuessed = event.key;
+
+    console.log(letterGuessed);
 
 
-   // If any letter is pressed then it runs the code 
-   if(inputtxt.value.match(letters)){
-      
+
+    //using filter to find the letters that match
     
+       function matchingLetters(splitLetters) {
+        return splitLetters === letterGuessed;
+        }
 
-      console.log(words[0].length)
-
-      for (var i = 0; i < words.length; i++) {
-        ;
-        
-    }
+        rightLetters = splitLetters.filter(matchingLetters);
   
+  console.log(rightLetters);
   
 
    
@@ -93,8 +90,8 @@ document.onkeyup = function(event) {
     letterGuessed.textContent = "Letter Guessed"
 
 
-  }
-};
+  };
+
 
 </script>
 
