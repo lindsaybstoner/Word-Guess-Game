@@ -27,3 +27,12 @@ theme: colorado
 
 words: rockies, skiing, mountains, hiking, biking, sunny, west, microbrewiers, outdoors
 
+things I still need to accomplish:
+
+1. adding all the letters to a new array and then removing the guessed letters 
+2. replacing the underline with the right letter - maybe look into indexOf functions for this to know the right spots
+3. showing all wrong guessed letter (not just last pressed)
+4. removing the commas inbetween the inidivdual lines
+5. have a winning count for if you get the whole word right
+6. move onto the next word
+
