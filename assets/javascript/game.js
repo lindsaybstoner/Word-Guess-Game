@@ -1,5 +1,5 @@
 
-// Creating variables to hold the number of wins.
+// Creating all global variables
 var wins = 0;
 var numberOfGuessLeft = 0;
 var currentWord = "";
@@ -26,7 +26,7 @@ pickCurrentWord = function() {
 pickCurrentWord();
 console.log(currentWord);
 
-//get current word length and then add 5 for how many guesses you ge
+//get current word length and then add 5 for how many wrong guesses the user gets
 numberOfGuess = function() {
     numberOfGuessLeft = currentWord.length + 5;
 }
@@ -56,13 +56,14 @@ splitCurrentWord = function() {
 splitCurrentWord();
 console.log(splitLetters);
 
+//create another array that can be spliced without messing with origional split letter array
 rightLetters = splitLetters;
 console.log(rightLetters);
 
 //funcion to find if current guess matches the current word and return it to use in for loop later
 function matchingLetters(letter) {
     return letter === letterGuessed;
-    }
+}
 
 
 //use index to loop through right letters and if letter guessed is the same get use the same index to replace
@@ -76,19 +77,18 @@ function replaceUnderlines () {
     } 
     if (!rightLetters.includes(letterGuessed)){
         numberOfGuessLeft--;
-        //print just changed amount of guesses after wrong letter
+        //print *just* changed amount of guesses after wrong letter
         numberOfGuessText.textContent = "Number of Guesses Left: " + numberOfGuessLeft; 
         letterGuessedText.textContent = "Letters Already Guessed: " + storeWrongLetters();
     }
 
 }
 
+//function to add all the wrong letters together to display more than just the most recent wrong letter
 function storeWrongLetters () {
     wrongLetters.push(letterGuessed);
     return wrongLetters;
 }
-
-
 
 // This function is run whenever the user presses a key.
 document.onkeyup = function(event) {
@@ -99,15 +99,14 @@ document.onkeyup = function(event) {
 
     console.log(letterGuessed);
 
+    //only fun this function once a key was pressed
     replaceUnderlines();
         
   
     console.log(rightLetters);
   
 
-   
-
-    // Hide the directions
+   //print direction text even when keys have been pressed
     directionsText.textContent = "Press any key to get started!";
 
 
