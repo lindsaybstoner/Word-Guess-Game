@@ -1,9 +1,7 @@
 
-  
 // Creating variables to hold the number of wins.
 var wins = 0;
 var numberOfGuessLeft = 0;
-var guessLeft = 0;
 var currentWord = "";
 var letterGuessed = "";
 var words = ["rockies", "skiing", "mountains", "hiking", "biking", "sunny", "west", "microbrewiers", "outdoors"];
@@ -36,12 +34,19 @@ numberOfGuess = function() {
 numberOfGuess();
 console.log(numberOfGuessLeft);
 
+//print amount of guesses before people start guessing
+numberOfGuessText.textContent = "Number of Guesses Left: " + numberOfGuessLeft;
+
 //to get the underscores for each word
 for (var i = 0; i < currentWord.length; i++) {
     underscore.push(" __ ");
     console.log(underscore);
 }
 
+//print the underscore before people start guessing
+//underscore = underscore.join(' ');
+underscoreText.textContent = underscore;
+//underscore = underscore.split(" ");
 
 //get current word then split into array 
 splitCurrentWord = function() {
@@ -54,34 +59,35 @@ console.log(splitLetters);
 rightLetters = splitLetters;
 console.log(rightLetters);
 
-//using filter to find the letters that match
-    
+//funcion to find if current guess matches the current word and return it to use in for loop later
 function matchingLetters(letter) {
     return letter === letterGuessed;
     }
 
-/* function addWrongLetters (wrongLetters) {
-    wrongLetters.push(letterGuessed);
-    }; */
 
 //use index to loop through right letters and if letter guessed is the same get use the same index to replace
-//make a loop to check the indexs of each of the letters
 function replaceUnderlines () {
-    if (splitLetters.includes(letterGuessed)) {
-        wins++; 
 
-        for (var i = 0; i < splitLetters.length; i++) {
-            if (splitLetters[i].value == letterGuessed) {
-                splice.splice(i);
-            }
-        } 
-    }
-
-   else {
+    for (var i = 0; i < rightLetters.length; i++) {
+        if (rightLetters[i] == letterGuessed) {
+            underscore.splice(i, 1, letterGuessed);
+        }
+  
+    } 
+    if (!rightLetters.includes(letterGuessed)){
         numberOfGuessLeft--;
-        letterGuessedText.textContent = "Letters Guessed: " + letterGuessed;
+        //print just changed amount of guesses after wrong letter
+        numberOfGuessText.textContent = "Number of Guesses Left: " + numberOfGuessLeft; 
+        letterGuessedText.textContent = "Letters Already Guessed: " + storeWrongLetters();
     }
+
 }
+
+function storeWrongLetters () {
+    wrongLetters.push(letterGuessed);
+    return wrongLetters;
+}
+
 
 
 // This function is run whenever the user presses a key.
@@ -93,16 +99,7 @@ document.onkeyup = function(event) {
 
     console.log(letterGuessed);
 
-    
-    /* rightLetters = rightLetters.filter(function ( obj ){
-        return obj.field !== letterGuessed;
-    }); */
-    
-   
-    replaceUnderlines ();
-
-            
-        
+    replaceUnderlines();
         
   
     console.log(rightLetters);
@@ -115,11 +112,7 @@ document.onkeyup = function(event) {
 
 
     // Display the user letter guess, their number of guesses left, if that letter
-    // corresponds with the current word 
-    winsText.textContent = "Correct Letter Guess: " + wins;
-    currentWordText.textContent = "Current Word: ";
-    numberOfGuessText.textContent = "Number of Guesses Remaining: " + numberOfGuessLeft; 
-    
+    winsText.textContent = "Wins: " + wins;
     underscoreText.textContent = underscore;
 
 
