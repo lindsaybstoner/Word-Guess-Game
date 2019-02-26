@@ -33,7 +33,6 @@ numberOfGuess = function () {
 }
 
 numberOfGuess();
-console.log(numberOfGuessLeft);
 
 //print amount of guesses before people start guessing
 numberOfGuessText.textContent = "Number of Guesses Left: " + numberOfGuessLeft;
@@ -41,7 +40,6 @@ numberOfGuessText.textContent = "Number of Guesses Left: " + numberOfGuessLeft;
 //to get the underscores for each word
 for (var i = 0; i < currentWord.length; i++) {
     underscore.push(" __ ");
-    console.log(underscore);
 }
 
 //print the underscore before people start guessing
@@ -55,16 +53,9 @@ splitCurrentWord = function () {
 }
 
 splitCurrentWord();
-console.log(splitLetters);
 
 //create another array that can be spliced without messing with origional split letter array
 rightLetters = splitLetters;
-console.log(rightLetters);
-
-//funcion to find if current guess matches the current word and return it to use in for loop later
-/* function matchingLetters(letter) {
-    return letter === letterGuessed;
-} */
 
 
 //use index to loop through right letters and if letter guessed is the same get use the same index to replace
@@ -86,24 +77,21 @@ function replaceUnderlines() {
 
 }
 
+function delayedAlert() {
+    timeoutID = window.setTimeout(window.alert, 2000, 'That was really slow!');
+  }
+
 //function to add all the wrong letters together to display more than just the most recent wrong letter
 function storeWrongLetters() {
     wrongLetters.push(letterGuessed);
     return wrongLetters;
 }
 
-/* function finshedWord (underscore) {
-    return underscore == splitLetters;
-    
-} */
-
-//console.log(underscore.every(finshedWord));
 
 function finshedWord() {
 
     if (correctLetters.toString() === splitLetters.toString() && underscore.toString() === splitLetters.toString()) {
         wins = wins + 1;
-        console.log("wins");
         resetGame();
     }
 
@@ -121,7 +109,7 @@ function resetGame() {
     numberOfGuessLeft = 0;
     currentWord = "";
     letterGuessed = "";
-    words = ["rockies", "skiing", "mountains", "hiking", "biking", "sunny", "west", "microbrewiers", "outdoors"];
+    words = ["rockies", "skiing", "mountains", "hiking", "biking", "sunny", "west", "outdoors"];
     splitLetters = [];
     rightLetters = [];
     wrongLetters = [];
@@ -136,7 +124,6 @@ function resetGame() {
 
     for (var i = 0; i < currentWord.length; i++) {
         underscore.push(" __ ");
-        console.log(underscore);
     }
 
     underscoreText.textContent = underscore;
@@ -151,7 +138,8 @@ function resetGame() {
 
     finshedWord();
 
-    console.log("reset");
+    wrongLetters = [];
+
 }
 
 
@@ -168,12 +156,6 @@ document.onkeydown = function (event) {
     replaceUnderlines();
 
     finshedWord();
-    //checkFullWord();
-    console.log(finshedWord);
-
-    console.log(rightLetters);
-
-    
 
     //print direction text even when keys have been pressed
     directionsText.textContent = "Press any letter to get started!";
@@ -183,8 +165,6 @@ document.onkeydown = function (event) {
     winsText.textContent = "Wins: " + wins;
     underscoreText.textContent = underscore;
 
-    //checkFullWord();
-    //finshedWord();
 };
 
 
