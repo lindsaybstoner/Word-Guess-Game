@@ -62,9 +62,9 @@ rightLetters = splitLetters;
 console.log(rightLetters);
 
 //funcion to find if current guess matches the current word and return it to use in for loop later
-function matchingLetters(letter) {
+/* function matchingLetters(letter) {
     return letter === letterGuessed;
-}
+} */
 
 
 //use index to loop through right letters and if letter guessed is the same get use the same index to replace
@@ -129,15 +129,28 @@ function resetGame() {
     correctLetters = [];
 
     pickCurrentWord();
+    console.log(currentWord);
+
+    numberOfGuess();
+    numberOfGuessText.textContent = "Number of Guesses Left: " + numberOfGuessLeft;
 
     for (var i = 0; i < currentWord.length; i++) {
         underscore.push(" __ ");
         console.log(underscore);
     }
 
-    
-    numberOfGuess();
+    underscoreText.textContent = underscore;
+
     splitCurrentWord();
+
+    rightLetters = splitLetters;
+
+    replaceUnderlines();
+
+    storeWrongLetters();
+
+    finshedWord();
+
     console.log("reset");
 }
 
@@ -163,7 +176,7 @@ document.onkeydown = function (event) {
     
 
     //print direction text even when keys have been pressed
-    directionsText.textContent = "Press any key to get started!";
+    directionsText.textContent = "Press any letter to get started!";
 
 
     // Display the user letter guess, their number of guesses left, if that letter
