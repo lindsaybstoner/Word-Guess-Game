@@ -75,10 +75,6 @@ function replaceUnderlines() {
 
 }
 
-function delayedAlert() {
-    timeoutID = window.setTimeout(window.alert, 2000, 'That was really slow!');
-  }
-
 //function to add all the wrong letters together to display more than just the most recent wrong letter
 function storeWrongLetters() {
     wrongLetters.push(letterGuessed);
