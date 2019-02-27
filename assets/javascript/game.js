@@ -4,7 +4,7 @@ var wins = 0;
 var numberOfGuessLeft = 0;
 var currentWord = "";
 var letterGuessed = "";
-var words = ["rockies", "skiing", "mountains", "hiking", "biking", "sunny", "west", "microbrewiers", "outdoors"];
+var words = ["rockies", "skiing", "mountains", "hiking", "biking", "sunny", "west", "outdoors"];
 var splitLetters = [];
 var rightLetters = [];
 var wrongLetters = [];
@@ -43,9 +43,7 @@ for (var i = 0; i < currentWord.length; i++) {
 }
 
 //print the underscore before people start guessing
-//underscore = underscore.join(' ');
 underscoreText.textContent = underscore;
-//underscore = underscore.split(" ");
 
 //get current word then split into array 
 splitCurrentWord = function () {
